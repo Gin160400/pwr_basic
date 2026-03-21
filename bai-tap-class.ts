@@ -101,7 +101,7 @@ dạng \"Bug ID: \[bugId\], Description: \[description\], Severity:
 Tạo 2 bug với thông tin khác nhau. Cập nhật trạng thái và mức độ nghiêm
 trọng của một bug, sau đó in thông tin. Gợi ý:
 Sử dụng getter và setter để kiểm soát việc cập nhật severity và status.
-Lưu danh sách các giá trị hợp lệ trong một mảng để kiểm tra.*/
+Lưu danh sách các giá trị hợp lệ trong một mảng để kiểm tra.
 
 type Severity = "low" | "medium" | "high";
 type Status = "open" | "inprogress" | "fixed" | "closed";
@@ -161,7 +161,94 @@ bug1.updateSeverity("medium");
 bug2.updateStatus("closed");
 
 console.log(bug1.display());
-console.log(bug2.display());
+console.log(bug2.display());*/
 
+/*Bài 7 Tạo class để quản lý Test Case Yêu cầu: Tạo một class TestCase để
+quản lý thông tin test case trong dự án kiểm thử phần mềm, bao gồm:
+Thuộc tính: id (string), title (string), status (string: \"pass\",
+\"fail\", hoặc \"pending\"). Phương thức: updateStatus(newStatus:
+string) để cập nhật trạng thái test case, chỉ cho phép các giá trị hợp
+lệ (\"pass\", \"fail\", \"pending\"). Phương thức: getTestCaseInfo() trả
+về thông tin test case dạng \"ID: \[id\], Title: \[title\], Status:
+\[status\]\". Nhiệm vụ:
+Tạo class và khởi tạo 3 test case với trạng thái khác nhau. Thử cập nhật
+trạng thái của một test case và in thông tin. Gợi ý:
+Sử dụng thuộc tính private để bảo vệ status. Kiểm tra giá trị newStatus
+trong phương thức updateStatus.
+
+type Status = "pass" | "fail" | "pending";
+
+class TestCase{
+    protected id: string;
+    protected title: string;
+    private status: string;
+
+    constructor(id: string, title: string, status: Status){
+        this.id = id;
+        this.title = title;
+        this.status = status;
+    }
+
+    getStatus(){
+        return this.status;
+    }
+
+    updateStatus(newStatus: string){
+        this.status = newStatus;
+        return `Cap nhat trang thai Tcs: ${newStatus}`;
+    }
+
+    getTestCaseInfor(){
+        return `ID: ${this.id}, Title: ${this.title}, Status: ${this.status}`;
+    }
+       
+}
+const testCase1 = new TestCase("01", "Login successfully","pass");
+const testCase2 = new TestCase("02", "Login fail with user wrong","pass");
+const testCase3 = new TestCase("03", "Login fail with pass wrong","pass");
+
+console.log(testCase1.getTestCaseInfor());
+
+testCase1.updateStatus("Fail");
+console.log(testCase1);*/
+
+/*🔹 Bài 6: Hệ thống đặt vé xem phim
+Mô tả:
+Tạo class Ticket để quản lý thông tin vé.
+Yêu cầu:
+Thuộc tính: movieName, seatNumber, price.
+Phương thức:
+printTicket(): in vé.
+changeSeat(newSeat: string): đổi chỗ ngồi.
+
+class Ticket{
+    protected movieName: string;
+    private seatNumber: number;
+    protected price: string;
+
+    constructor(movieName: string, seatNumber: number, price: string){
+        this.movieName = movieName;
+        this.seatNumber = seatNumber;
+        this.price = price;
+    }
+
+    getSeatNumber(){
+        return this.seatNumber;
+    }
+
+    printTicket(){
+        return `Thong tin ve: Ten phim ${this.movieName}, Cho ngoi ${this.seatNumber}, Gia ve ${this.price}`;
+    }
+    changeSeat(newSeat: number){
+        this.seatNumber = newSeat;
+        return `Cho ngoi moi: ${newSeat}`;
+    }
+}
+
+const ticket1 = new Ticket("Dem ngay xa me",5,"120.000");
+console.log(ticket1.printTicket());
+
+ticket1.changeSeat(6);
+console.log(ticket1.changeSeat(6));*/
 
 
